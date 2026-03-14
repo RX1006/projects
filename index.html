@@ -973,17 +973,16 @@ Known fingerings: C:[0,0,0,3] Am:[2,0,0,0] F:[2,0,1,0] G:[0,2,3,2] Em:[0,4,3,2] 
 Sections: include the COMPLETE FULL lyrics of the entire song — every verse, chorus, pre-chorus, bridge, and outro. Do NOT truncate or abbreviate. Place [Chord] markers right before the syllable where the chord changes. Include all repeated sections separately (e.g. Chorus appears multiple times → include each occurrence). Aim for 6-10 sections covering the whole song.`;
 
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/generate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 2500,
-        messages: [{ role: 'user', content: prompt }]
-      })
+      body: JSON.stringify({ prompt, tier: selectedTier }),
     });
 
     const data = await res.json();
+    if (!res.ok) {
+      throw new Error(data.error || `HTTP ${res.status}`);
+    }
     clearInterval(msgTimer);
 
     const raw = data.content.map(i => i.text || '').join('');
@@ -1006,7 +1005,9 @@ Sections: include the COMPLETE FULL lyrics of the entire song — every verse, c
     console.error(err);
     document.getElementById('loadingState').style.display = 'none';
     document.getElementById('errorState').style.display = 'block';
-    document.getElementById('errorMsg').textContent = 'Something went wrong. Try a different song name.';
+    document.getElementById('errorMsg').textContent = err.message.includes('ANTHROPIC_API_KEY')
+      ? 'API key not configured. Add ANTHROPIC_API_KEY in Vercel environment variables.'
+      : 'Something went wrong. Check the browser console for details.';
   }
 
   document.getElementById('generateBtn').disabled = false;

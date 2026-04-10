@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sell My Toyota — Dealers Compete for Your Car | BidBus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+
+/* ─────────────────────────────────────────────────────────
+   BIDBUS DESIGN TOKENS
+   ───────────────────────────────────────────────────────── */
+:root {
+  --bb-navy:      #0B0F1A;   /* hero / nav dark bg */
+  --bb-navy-mid:  #111827;   /* dark section bg */
+  --bb-navy-card: #1A2030;   /* card bg on dark */
+  --bb-navy-border:#232C40;  /* border on dark */
+  --bb-white:     #FFFFFF;
+  --bb-off-white: #F7F8FA;   /* light section bg */
+  --bb-warm-gray: #F0F1F4;   /* subtle bg */
+  --bb-gray-100:  #E5E7EB;
+  --bb-gray-400:  #9CA3AF;
+  --bb-gray-600:  #4B5563;
+  --bb-gray-800:  #1F2937;
+  --bb-green:     #22C55E;   /* "above market" badge */
+  --bb-green-bg:  #DCFCE7;
+  --bb-green-dark:#15803D;
+  --bb-accent:    #3B82F6;   /* blue CTA accent */
+  --bb-accent-hover:#2563EB;
+  --bb-text-dark: #0B0F1A;
+  --bb-text-body: #374151;
+  --bb-text-muted:#6B7280;
+  --bb-border:    #E5E7EB;
+  --bb-radius:    12px;
+  --bb-radius-lg: 20px;
+  --ff: 'Plus Jakarta Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff);
+  background: var(--bb-white);
+  color: var(--bb-text-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── TYPOGRAPHY ─── */
+h1, h2, h3, h4, h5 {
+  font-family: var(--ff);
+  line-height: 1.15;
+  color: var(--bb-text-dark);
+}
+
+/* ─────────────────────────────────────────────────────────
+   NAV — matches BidBus: white bg, logo left, links + CTA
+   ───────────────────────────────────────────────────────── */
+nav {
+  background: var(--bb-white);
+  border-bottom: 1px solid var(--bb-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 48px;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--bb-text-dark);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.nav-logo .dot { color: var(--bb-accent); }
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+nav ul li a {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--bb-text-body);
+  text-decoration: none;
+  transition: color .2s;
+}
+nav ul li a:hover { color: var(--bb-text-dark); }
+.btn-nav {
+  background: var(--bb-accent);
+  color: var(--bb-white) !important;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-weight: 700 !important;
+  transition: background .2s !important;
+}
+.btn-nav:hover { background: var(--bb-accent-hover) !important; }
+
+/* ─────────────────────────────────────────────────────────
+   HERO — dark navy, centered, BidBus style
+   ───────────────────────────────────────────────────────── */
+.hero {
+  background: var(--bb-navy);
+  padding: 96px 48px 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -160px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 500px;
+  background: radial-gradient(ellipse, rgba(59,130,246,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(59,130,246,0.15);
+  border: 1px solid rgba(59,130,246,0.3);
+  color: #93C5FD;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 28px;
+  letter-spacing: 0.2px;
+}
+.hero h1 {
+  font-size: clamp(38px, 5.5vw, 64px);
+  font-weight: 800;
+  color: var(--bb-white);
+  letter-spacing: -1.5px;
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+.hero-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  max-width: 520px;
+  margin: 0 auto 40px;
+  font-weight: 400;
+  line-height: 1.65;
+}
+
+/* VIN/Plate input block (BidBus style) */
+.hero-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.hero-input-row {
+  display: flex;
+  gap: 0;
+  background: var(--bb-white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1);
+  width: 100%;
+  max-width: 480px;
+}
+.hero-input-row input {
+  flex: 1;
+  padding: 16px 20px;
+  font-family: var(--ff);
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--bb-text-dark);
+}
+.hero-input-row input::placeholder { color: var(--bb-gray-400); }
+.hero-input-row button {
+  background: var(--bb-accent);
+  color: #fff;
+  border: none;
+  padding: 0 28px;
+  font-family: var(--ff);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.hero-input-row button:hover { background: var(--bb-accent-hover); }
+.hero-alt-link {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+}
+.hero-alt-link a { color: rgba(255,255,255,0.65); text-decoration: underline; cursor: pointer; }
+
+/* Reviews.io rating row */
+.hero-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 32px;
+}
+.stars-yellow { color: #FBBF24; font-size: 16px; letter-spacing: 1px; }
+.rating-label { font-size: 14px; color: rgba(255,255,255,0.55); font-weight: 500; }
+.rating-score { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.9); }
+
+/* Toyota SVG car in hero */
+.hero-car-wrap {
+  margin-top: 52px;
+  position: relative;
+}
+.hero-car-svg {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  display: block;
+  filter: drop-shadow(0 -24px 60px rgba(59,130,246,0.2));
+  animation: heroFloat 5s ease-in-out infinite;
+}
+@keyframes heroFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* ─────────────────────────────────────────────────────────
+   STEPS — "Ready. Set. Sold." numbered steps (BidBus)
+   ───────────────────────────────────────────────────────── */
+.section { padding: 80px 48px; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-eyebrow {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--bb-accent);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+  color: var(--bb-text-dark);
+}
+.section-subtitle {
+  font-size: 17px;
+  color: var(--bb-text-muted);
+  max-width: 520px;
+  font-weight: 400;
+}
+.text-center { text-align: center; }
+.text-center .section-subtitle { margin: 0 auto; }
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 52px;
+  position: relative;
+}
+.steps-grid::after {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: calc(16.67% + 12px);
+  right: calc(16.67% + 12px);
+  height: 2px;
+  background: var(--bb-gray-100);
+  z-index: 0;
+}
+.step-card {
+  background: var(--bb-white);
+  border: 1px solid var(--bb-border);
+  border-radius: var(--bb-radius-lg);
+  padding: 36px 28px;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow .2s, transform .2s;
+}
+.step-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.07); transform: translateY(-3px); }
+.step-num {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  background: var(--bb-navy);
+  color: var(--bb-white);
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.step-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+.step-card p { font-size: 14px; color: var(--bb-text-muted); line-height: 1.7; }
+
+/* ─────────────────────────────────────────────────────────
+   3 REASONS SECTION — icon + text (dark bg)
+   ───────────────────────────────────────────────────────── */
+.dark-section {
+  background: var(--bb-navy);
+  padding: 80px 48px;
+}
+.dark-section .section-title { color: var(--bb-white); }
+.dark-section .section-subtitle { color: rgba(255,255,255,0.55); }
+.dark-section .section-eyebrow { color: #93C5FD; }
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 52px;
+}
+.reason-card {
+  background: var(--bb-navy-card);
+  border: 1px solid var(--bb-navy-border);
+  border-radius: var(--bb-radius-lg);
+  padding: 36px 28px;
+  transition: border-color .2s;
+}
+.reason-card:hover { border-color: rgba(59,130,246,0.4); }
+.reason-icon {
+  width: 52px; height: 52px;
+  background: rgba(59,130,246,0.15);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+.reason-card h3 { font-size: 18px; font-weight: 700; color: var(--bb-white); margin-bottom: 10px; }
+.reason-card p { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.7; }
+
+/* ─────────────────────────────────────────────────────────
+   COMPARISON TABLE (BidBus signature component)
+   ───────────────────────────────────────────────────────── */
+.compare-wrap {
+  background: var(--bb-off-white);
+  padding: 80px 48px;
+}
+.compare-card {
+  background: var(--bb-white);
+  border: 1px solid var(--bb-border);
+  border-radius: var(--bb-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  margin-top: 48px;
+}
+.compare-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 28px;
+  background: var(--bb-navy);
+  color: rgba(255,255,255,0.7);
+  font-size: 13px;
+  font-weight: 600;
+  border-bottom: 1px solid var(--bb-navy-border);
+}
+.compare-car-label { color: rgba(255,255,255,0.45); font-size: 12px; margin-top: 2px; }
+.compare-car-name { color: var(--bb-white); font-weight: 700; font-size: 15px; }
+table.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table.compare-table thead th {
+  background: var(--bb-off-white);
+  padding: 14px 24px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--bb-text-muted);
+  border-bottom: 1px solid var(--bb-border);
+}
+table.compare-table tbody tr { border-bottom: 1px solid var(--bb-border); }
+table.compare-table tbody tr:last-child { border-bottom: none; }
+table.compare-table tbody tr:hover { background: var(--bb-off-white); }
+table.compare-table tbody td { padding: 18px 24px; font-size: 15px; }
+.compare-brand {
+  font-weight: 700;
+  color: var(--bb-text-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.compare-brand .winner-dot {
+  width: 8px; height: 8px;
+  background: var(--bb-green);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.best-price {
+  font-weight: 700;
+  color: var(--bb-green-dark);
+  background: var(--bb-green-bg);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 14px;
+}
+.tag-pill {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--bb-text-muted);
+  background: var(--bb-warm-gray);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.tag-fast {
+  color: #1D4ED8;
+  background: #DBEAFE;
+}
+
+/* ─────────────────────────────────────────────────────────
+   LIVE BIDS / RECENT SALES GRID (BidBus signature)
+   ───────────────────────────────────────────────────────── */
+.sales-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.sale-card {
+  background: var(--bb-white);
+  border: 1px solid var(--bb-border);
+  border-radius: var(--bb-radius);
+  overflow: hidden;
+  transition: box-shadow .2s, transform .2s;
+}
+.sale-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-2px); }
+.sale-card-img {
+  width: 100%;
+  height: 130px;
+  background: linear-gradient(135deg, #E5E7EB, #D1D5DB);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  position: relative;
+  overflow: hidden;
+}
+.sale-card-img .bid-badge {
+  position: absolute;
+  top: 10px; right: 10px;
+  background: var(--bb-navy);
+  color: rgba(255,255,255,0.85);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.sale-card-body { padding: 14px; }
+.sale-car-name { font-size: 13px; font-weight: 700; color: var(--bb-text-dark); margin-bottom: 8px; line-height: 1.3; }
+.sale-price-row { display: flex; align-items: center; justify-content: space-between; }
+.sale-price {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--bb-text-dark);
+}
+.above-market {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--bb-green-dark);
+  background: var(--bb-green-bg);
+  padding: 3px 8px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ─────────────────────────────────────────────────────────
+   STATS BAR (250k bids, 9/10 recommend, 5k+ sold)
+   ───────────────────────────────────────────────────────── */
+.stats-bar {
+  background: var(--bb-navy);
+  padding: 56px 48px;
+}
+.stats-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  text-align: center;
+}
+.stat-block { padding: 24px 32px; border-right: 1px solid var(--bb-navy-border); }
+.stat-block:last-child { border-right: none; }
+.stat-num {
+  font-size: 48px;
+  font-weight: 800;
+  color: var(--bb-white);
+  letter-spacing: -2px;
+  display: block;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.stat-label {
+  font-size: 14px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.5;
+}
+.stat-label strong { color: rgba(255,255,255,0.75); display: block; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+
+/* ─────────────────────────────────────────────────────────
+   TESTIMONIALS GRID
+   ───────────────────────────────────────────────────────── */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.testimonial-card {
+  background: var(--bb-white);
+  border: 1px solid var(--bb-border);
+  border-radius: var(--bb-radius-lg);
+  padding: 28px 24px;
+  transition: box-shadow .2s;
+}
+.testimonial-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+.test-stars { font-size: 14px; color: #FBBF24; margin-bottom: 14px; letter-spacing: 1px; }
+.test-title { font-size: 16px; font-weight: 700; color: var(--bb-text-dark); margin-bottom: 10px; }
+.test-body { font-size: 14px; color: var(--bb-text-muted); line-height: 1.65; margin-bottom: 20px; }
+.test-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.test-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bb-navy);
+  color: var(--bb-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.test-name { font-size: 13px; font-weight: 700; color: var(--bb-text-dark); }
+.test-handle { font-size: 12px; color: var(--bb-text-muted); }
+
+/* ─────────────────────────────────────────────────────────
+   MODEL VALUE TABLE SECTION
+   ───────────────────────────────────────────────────────── */
+.model-table-wrap {
+  border: 1px solid var(--bb-border);
+  border-radius: var(--bb-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  margin-top: 48px;
+}
+table.model-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bb-white);
+}
+table.model-table thead th {
+  background: var(--bb-navy);
+  color: rgba(255,255,255,0.6);
+  padding: 14px 20px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+table.model-table tbody tr { border-bottom: 1px solid var(--bb-border); }
+table.model-table tbody tr:last-child { border-bottom: none; }
+table.model-table tbody tr:hover { background: var(--bb-off-white); }
+table.model-table tbody td { padding: 16px 20px; font-size: 14px; }
+.model-td-name { font-weight: 700; color: var(--bb-text-dark); }
+.model-td-link {
+  color: var(--bb-accent);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 13px;
+}
+.model-td-link:hover { text-decoration: underline; }
+.table-note { font-size: 12px; color: var(--bb-text-muted); margin-top: 12px; font-style: italic; }
+.table-updated { font-size: 12px; color: var(--bb-text-muted); margin-bottom: 8px; }
+
+/* ─────────────────────────────────────────────────────────
+   SELLER TIPS SECTION
+   ───────────────────────────────────────────────────────── */
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.tip-card {
+  background: var(--bb-white);
+  border: 1px solid var(--bb-border);
+  border-radius: var(--bb-radius-lg);
+  padding: 32px 28px;
+  transition: box-shadow .2s, transform .2s;
+}
+.tip-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.06); transform: translateY(-2px); }
+.tip-icon-wrap {
+  width: 48px; height: 48px;
+  background: var(--bb-off-white);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+.tip-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.tip-card p { font-size: 14px; color: var(--bb-text-muted); line-height: 1.65; }
+.tip-saving-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--bb-green-dark);
+  background: var(--bb-green-bg);
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-top: 14px;
+  border: 1px solid #BBF7D0;
+}
+
+/* ─────────────────────────────────────────────────────────
+   FAQ
+   ───────────────────────────────────────────────────────── */
+.faq-wrap {
+  border: 1px solid var(--bb-border);
+  border-radius: var(--bb-radius-lg);
+  overflow: hidden;
+  margin-top: 48px;
+}
+.faq-item { border-bottom: 1px solid var(--bb-border); background: var(--bb-white); }
+.faq-item:last-child { border-bottom: none; }
+.faq-btn {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 22px 28px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  font-family: var(--ff);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--bb-text-dark);
+  transition: background .15s;
+}
+.faq-btn:hover { background: var(--bb-off-white); }
+.faq-btn.open { color: var(--bb-accent); }
+.faq-chevron {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--bb-off-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+  transition: transform .3s, background .2s;
+  color: var(--bb-text-muted);
+}
+.faq-btn.open .faq-chevron { transform: rotate(180deg); background: var(--bb-accent); color: #fff; }
+.faq-answer {
+  display: none;
+  padding: 0 28px 22px;
+  font-size: 15px;
+  color: var(--bb-text-muted);
+  line-height: 1.7;
+}
+.faq-answer.open { display: block; }
+
+/* ─────────────────────────────────────────────────────────
+   INLINE PEACE-OF-MIND BLOCK
+   ───────────────────────────────────────────────────────── */
+.peace-block {
+  background: var(--bb-navy);
+  border-radius: var(--bb-radius-lg);
+  padding: 52px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 32px;
+  margin-top: 48px;
+}
+.peace-block h3 {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--bb-white);
+  letter-spacing: -0.4px;
+  margin-bottom: 10px;
+}
+.peace-block p { color: rgba(255,255,255,0.55); font-size: 15px; }
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bb-accent);
+  color: var(--bb-white);
+  font-family: var(--ff);
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .2s, transform .15s;
+  border: none;
+  cursor: pointer;
+}
+.btn-primary:hover { background: var(--bb-accent-hover); transform: translateY(-1px); }
+.btn-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8);
+  font-family: var(--ff);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 13px 28px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+/* ─────────────────────────────────────────────────────────
+   FINAL CTA (light bg, big centered)
+   ───────────────────────────────────────────────────────── */
+.final-cta {
+  background: var(--bb-off-white);
+  padding: 96px 48px;
+  text-align: center;
+  border-top: 1px solid var(--bb-border);
+}
+.final-cta h2 {
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+.final-cta p {
+  font-size: 17px;
+  color: var(--bb-text-muted);
+  max-width: 520px;
+  margin: 0 auto 36px;
+}
+.final-cta-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.btn-dark {
+  background: var(--bb-navy);
+  color: var(--bb-white);
+  font-family: var(--ff);
+  font-weight: 700;
+  font-size: 16px;
+  padding: 16px 36px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+  border: none;
+  cursor: pointer;
+}
+.btn-dark:hover { background: #111827; transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  border: 2px solid var(--bb-border);
+  color: var(--bb-text-body);
+  font-family: var(--ff);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color .2s;
+}
+.btn-ghost:hover { border-color: var(--bb-gray-400); }
+
+/* ─────────────────────────────────────────────────────────
+   FOOTER (BidBus: 4-col, dark)
+   ───────────────────────────────────────────────────────── */
+footer {
+  background: var(--bb-navy);
+  padding: 64px 48px 36px;
+  color: rgba(255,255,255,0.45);
+}
+.footer-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 52px;
+}
+.footer-brand .logo {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--bb-white);
+  letter-spacing: -0.4px;
+  margin-bottom: 14px;
+  display: block;
+}
+.footer-brand .logo .dot { color: var(--bb-accent); }
+.footer-brand p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.4); max-width: 260px; }
+.footer-col h5 {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul li a {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-col ul li a:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 0 auto;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-bottom p { font-size: 13px; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.35); text-decoration: none; }
+.footer-links a:hover { color: rgba(255,255,255,0.65); }
+
+/* ─────────────────────────────────────────────────────────
+   LIGHT SECTION BG
+   ───────────────────────────────────────────────────────── */
+.light-bg { background: var(--bb-off-white); }
+
+/* ─────────────────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .steps-grid, .reasons-grid, .testimonials-grid { grid-template-columns: 1fr; }
+  .sales-grid { grid-template-columns: repeat(2, 1fr); }
+  .tips-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .peace-block { grid-template-columns: 1fr; text-align: center; }
+  nav ul { display: none; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-block { border-right: none; border-bottom: 1px solid var(--bb-navy-border); }
+  .stat-block:last-child { border-bottom: none; }
+}
+@media (max-width: 640px) {
+  .section, .dark-section, .compare-wrap, .stats-bar, .final-cta { padding: 60px 24px; }
+  nav { padding: 0 24px; }
+  .hero { padding: 72px 24px 60px; }
+  .sales-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+  NAV
+═══════════════════════════════════════════ -->
+<nav>
+  <a href="#" class="nav-logo">Bid<span class="dot">Bus</span></a>
+  <ul>
+    <li><a href="#">Sell My Car</a></li>
+    <li><a href="#">How It Works</a></li>
+    <li><a href="#">Reviews</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a href="#">Help Center</a></li>
+    <li><a href="#" class="btn-nav">Get My Offer</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+  HERO
+═══════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🏆 1,000+ Toyota dealers competing right now</div>
+    <h1>Sell your Toyota fast, for more</h1>
+    <p class="hero-sub">Get your top dollar offer fast — we let 1,000+ dealers compete to buy your Toyota online. No haggling. No driving around.</p>
+
+    <div class="hero-form">
+      <div class="hero-input-row">
+        <input type="text" placeholder="Enter license plate (e.g. ABC1234)"/>
+        <button>Get My Offer</button>
+      </div>
+      <div class="hero-alt-link">No license plate? <a>Enter VIN instead</a></div>
+    </div>
+
+    <div class="hero-rating">
+      <span class="stars-yellow">★★★★★</span>
+      <span class="rating-score">4.7</span>
+      <span class="rating-label">· Rated 4.7/5 on Reviews.io · Trusted by 5,000+ sellers</span>
+    </div>
+
+    <!-- Toyota SVG Illustration -->
+    <div class="hero-car-wrap">
+      <svg class="hero-car-svg" viewBox="0 0 700 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="carBody" x1="0" y1="0" x2="700" y2="300" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#E2E8F0"/>
+            <stop offset="100%" stop-color="#CBD5E1"/>
+          </linearGradient>
+          <linearGradient id="roofGrad" x1="200" y1="60" x2="480" y2="140" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#ECFDF5"/>
+            <stop offset="100%" stop-color="#A7F3D0"/>
+          </linearGradient>
+          <linearGradient id="glass" x1="200" y1="70" x2="440" y2="140" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#BFDBFE" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#60A5FA" stop-opacity="0.5"/>
+          </linearGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="6" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Ground shadow -->
+        <ellipse cx="350" cy="268" rx="270" ry="16" fill="rgba(0,0,0,0.25)"/>
+
+        <!-- Car body -->
+        <path d="M80 220 L90 220 L90 188 L130 148 L200 108 L310 88 L420 90 L510 112 L568 148 L588 188 L595 220 L600 220 L600 235 L80 235 Z" fill="url(#carBody)"/>
+
+        <!-- Roof -->
+        <path d="M180 108 L224 70 L320 54 L410 56 L468 80 L510 112 L420 90 L310 88 L200 108 Z" fill="#F8FAFC"/>
+
+        <!-- Windshield front -->
+        <path d="M212 110 L248 74 L320 58 L400 60 L448 82 L460 112 L420 92 L310 90 L210 110 Z" fill="url(#glass)" opacity="0.9"/>
+
+        <!-- Windshield rear -->
+        <path d="M130 148 L148 108 L195 108 L200 108 L200 148 Z" fill="url(#glass)" opacity="0.7"/>
+
+        <!-- Door line -->
+        <line x1="340" y1="108" x2="345" y2="235" stroke="rgba(100,116,139,0.3)" stroke-width="1.5"/>
+
+        <!-- Left windows -->
+        <path d="M205 110 L200 148 L338 140 L340 106 L310 90 Z" fill="url(#glass)" opacity="0.75"/>
+        <path d="M340 106 L340 140 L460 130 L460 112 L420 92 Z" fill="url(#glass)" opacity="0.65"/>
+
+        <!-- Wheels -->
+        <circle cx="175" cy="235" r="46" fill="#1E293B"/>
+        <circle cx="175" cy="235" r="35" fill="#334155"/>
+        <circle cx="175" cy="235" r="20" fill="#475569"/>
+        <circle cx="175" cy="235" r="9" fill="#64748B"/>
+        <!-- Spokes L -->
+        <line x1="175" y1="200" x2="175" y2="216" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="175" y1="254" x2="175" y2="270" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="140" y1="235" x2="156" y2="235" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="194" y1="235" x2="210" y2="235" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+
+        <circle cx="510" cy="235" r="46" fill="#1E293B"/>
+        <circle cx="510" cy="235" r="35" fill="#334155"/>
+        <circle cx="510" cy="235" r="20" fill="#475569"/>
+        <circle cx="510" cy="235" r="9" fill="#64748B"/>
+        <!-- Spokes R -->
+        <line x1="510" y1="200" x2="510" y2="216" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="510" y1="254" x2="510" y2="270" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="475" y1="235" x2="491" y2="235" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+        <line x1="529" y1="235" x2="545" y2="235" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+
+        <!-- Headlights -->
+        <path d="M568 152 L595 168 L595 188 L572 190 L560 172 Z" fill="white" opacity="0.95" filter="url(#glow)"/>
+        <!-- Fog light -->
+        <ellipse cx="585" cy="195" rx="8" ry="5" fill="#FDE68A" opacity="0.8"/>
+
+        <!-- Tail lights -->
+        <path d="M90 158 L80 168 L80 190 L90 192 L100 175 Z" fill="#FCA5A5" opacity="0.9"/>
+
+        <!-- Grille -->
+        <path d="M568 178 L595 188 L595 210 L568 210 Z" fill="#475569"/>
+        <line x1="578" y1="178" x2="578" y2="210" stroke="#334155" stroke-width="1"/>
+        <line x1="568" y1="192" x2="595" y2="196" stroke="#334155" stroke-width="1"/>
+
+        <!-- Toyota T badge -->
+        <circle cx="338" cy="220" r="13" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
+        <text x="338" y="225" text-anchor="middle" font-size="12" fill="rgba(255,255,255,0.5)" font-weight="800" font-family="sans-serif">T</text>
+
+        <!-- Bid counter floating badge -->
+        <rect x="450" y="48" width="130" height="44" rx="12" fill="#22C55E"/>
+        <text x="515" y="65" text-anchor="middle" font-size="11" fill="white" font-weight="700" font-family="sans-serif">🔥 LIVE BIDS</text>
+        <text x="515" y="82" text-anchor="middle" font-size="13" fill="white" font-weight="800" font-family="sans-serif">24 dealers bidding</text>
+
+        <!-- Offer badge -->
+        <rect x="110" y="52" width="140" height="48" rx="12" fill="#1E40AF"/>
+        <text x="180" y="70" text-anchor="middle" font-size="11" fill="rgba(255,255,255,0.7)" font-weight="600" font-family="sans-serif">Top offer so far</text>
+        <text x="180" y="89" text-anchor="middle" font-size="15" fill="white" font-weight="800" font-family="sans-serif">$39,200</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  STEPS
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner text-center">
+    <p class="section-eyebrow">Simple process</p>
+    <h2 class="section-title">Ready. Set. Sold.</h2>
+    <p class="section-subtitle">Sell your Toyota the hassle-free way, in three easy steps.</p>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <h3>Get an Estimate</h3>
+        <p>Enter a few details about your Toyota and instantly receive a free market valuation. Takes under 2 minutes. No account needed.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <h3>Watch Dealers Bidding</h3>
+        <p>Over 1,000 trusted dealerships compete to buy your Toyota. Enjoy real-time bidding and watch offers rise — often within 2 hours.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <h3>Get It Sold (Fast)</h3>
+        <p>We'll guide you through the entire process. No stress, no haggling — just a simple, smooth sale with same-day payment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  3 REASONS (dark)
+═══════════════════════════════════════════ -->
+<div class="dark-section">
+  <div class="section-inner text-center">
+    <p class="section-eyebrow">Why BidBus</p>
+    <h2 class="section-title">3 reasons to sell your Toyota on BidBus</h2>
+    <p class="section-subtitle">More money. Less stress. All in a few simple steps.</p>
+    <div class="reasons-grid">
+      <div class="reason-card">
+        <div class="reason-icon">💰</div>
+        <h3>Get More Money</h3>
+        <p>1,000+ dealers compete to buy your Toyota — not just one. That's why 80% of our customers get more money than they were originally offered.</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">⚡</div>
+        <h3>Sell in Just Hours</h3>
+        <p>Dealers start bidding the moment your Toyota is listed — get top offers within 2 hours, all from the comfort of your home.</p>
+      </div>
+      <div class="reason-card">
+        <div class="reason-icon">🤝</div>
+        <h3>Skip the Haggling</h3>
+        <p>Don't waste time driving to dealerships. When you've agreed the sale on BidBus, we handle logistics, paperwork, and pickup for free.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  COMPARISON TABLE
+═══════════════════════════════════════════ -->
+<div class="compare-wrap">
+  <div class="section-inner">
+    <p class="section-eyebrow">Compare your options</p>
+    <h2 class="section-title">Compare your selling options</h2>
+    <p class="section-subtitle">Based on data for the 2021 Toyota Tacoma TRD Sport with 28,500 miles</p>
+    <div class="compare-card">
+      <div class="compare-header">
+        <span>📊</span>
+        <div>
+          <div class="compare-car-label">Comparison data for</div>
+          <div class="compare-car-name">2021 Toyota Tacoma TRD Sport · 28,500 miles · Good condition</div>
+        </div>
+      </div>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Selling price</th>
+            <th>Time</th>
+            <th>Offer type</th>
+            <th>Process</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="compare-brand"><span class="winner-dot"></span> BidBus</div></td>
+            <td><span class="best-price">$39,300</span></td>
+            <td><span class="tag-pill tag-fast">2 hours</span></td>
+            <td>Cash</td>
+            <td>100% Online</td>
+          </tr>
+          <tr>
+            <td><div class="compare-brand">Private Sale</div></td>
+            <td>$41,300</td>
+            <td><span class="tag-pill">~30 days</span></td>
+            <td>Verbal</td>
+            <td>Meeting 25 strangers</td>
+          </tr>
+          <tr>
+            <td><div class="compare-brand">Dealership Trade-In</div></td>
+            <td>$33,500</td>
+            <td><span class="tag-pill">1–4 days</span></td>
+            <td>Cash</td>
+            <td>Talking to 10 dealers</td>
+          </tr>
+          <tr>
+            <td><div class="compare-brand">CarMax / Carvana</div></td>
+            <td>$35,100</td>
+            <td><span class="tag-pill">2–5 days</span></td>
+            <td>Cash</td>
+            <td>Single offer, no competition</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  MODEL VALUES TABLE
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-eyebrow">Toyota model values</p>
+    <h2 class="section-title">What is your Toyota worth right now?</h2>
+    <p class="section-subtitle">Recent BidBus auction results show what Toyota sellers are actually getting — not just estimates.</p>
+    <div class="table-updated" style="margin-top:24px;">Last updated April 10, 2026</div>
+    <div class="model-table-wrap">
+      <table class="model-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>BidBus offer range</th>
+            <th>Avg. dealer trade-in</th>
+            <th>Avg. bids received</th>
+            <th>Typical advantage</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="model-td-name">Camry</td>
+            <td>$18,200 – $31,400</td>
+            <td>$16,800</td>
+            <td>28 bids</td>
+            <td><span class="above-market">↑ +$2,900</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+          <tr>
+            <td class="model-td-name">RAV4</td>
+            <td>$22,500 – $38,000</td>
+            <td>$19,500</td>
+            <td>34 bids</td>
+            <td><span class="above-market">↑ +$4,600</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+          <tr>
+            <td class="model-td-name">Tacoma</td>
+            <td>$26,000 – $44,500</td>
+            <td>$22,000</td>
+            <td>41 bids</td>
+            <td><span class="above-market">↑ +$5,800</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+          <tr>
+            <td class="model-td-name">Highlander</td>
+            <td>$24,000 – $42,000</td>
+            <td>$20,500</td>
+            <td>31 bids</td>
+            <td><span class="above-market">↑ +$4,900</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+          <tr>
+            <td class="model-td-name">Corolla</td>
+            <td>$13,500 – $23,000</td>
+            <td>$12,100</td>
+            <td>22 bids</td>
+            <td><span class="above-market">↑ +$2,600</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+          <tr>
+            <td class="model-td-name">Prius</td>
+            <td>$16,000 – $29,500</td>
+            <td>$14,400</td>
+            <td>26 bids</td>
+            <td><span class="above-market">↑ +$3,200</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+          <tr>
+            <td class="model-td-name">4Runner</td>
+            <td>$28,000 – $49,000</td>
+            <td>$24,500</td>
+            <td>38 bids</td>
+            <td><span class="above-market">↑ +$5,200</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+          <tr>
+            <td class="model-td-name">Tundra</td>
+            <td>$30,000 – $55,000</td>
+            <td>$26,200</td>
+            <td>43 bids</td>
+            <td><span class="above-market">↑ +$5,700</span></td>
+            <td><a href="#" class="model-td-link">Get offer →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">Based on BidBus sellers who completed auctions in the past 12 months. Actual offers vary by trim, condition, mileage, and location.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  RECENT SALES GRID
+═══════════════════════════════════════════ -->
+<section class="section light-bg">
+  <div class="section-inner">
+    <p class="section-eyebrow">Past auction results</p>
+    <h2 class="section-title">Join 2,000+ people who've sold their Toyota through us</h2>
+    <p class="section-subtitle">Real cars. Real bids. Real money above market.</p>
+    <div class="sales-grid">
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#CBD5E1,#94A3B8);">
+          🚗
+          <div class="bid-badge">33 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2021 Toyota Corolla SE</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$26,800</div>
+            <div class="above-market">↑ $2,200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#D1FAE5,#A7F3D0);">
+          🛻
+          <div class="bid-badge">41 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2021 Toyota Tacoma TRD</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$39,300</div>
+            <div class="above-market">↑ $4,700</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#DBEAFE,#BFDBFE);">
+          🚙
+          <div class="bid-badge">43 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2019 Toyota CHR</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$24,400</div>
+            <div class="above-market">↑ $1,800</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#FEF9C3,#FDE68A);">
+          🏔️
+          <div class="bid-badge">48 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2021 Toyota 4Runner SR5</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$38,100</div>
+            <div class="above-market">↑ $5,100</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#FCE7F3,#FBCFE8);">
+          🔋
+          <div class="bid-badge">26 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2022 Toyota Prius Prime</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$29,500</div>
+            <div class="above-market">↑ $3,200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#EDE9FE,#DDD6FE);">
+          🚐
+          <div class="bid-badge">31 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2020 Toyota Highlander XLE</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$34,100</div>
+            <div class="above-market">↑ $4,200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#FFEDD5,#FED7AA);">
+          🛻
+          <div class="bid-badge">52 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2022 Toyota Tundra TRD Pro</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$50,200</div>
+            <div class="above-market">↑ $6,200</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sale-card">
+        <div class="sale-card-img" style="background: linear-gradient(135deg,#F0FDF4,#DCFCE7);">
+          🚗
+          <div class="bid-badge">28 Bids</div>
+        </div>
+        <div class="sale-card-body">
+          <div class="sale-car-name">2023 Toyota Camry XSE</div>
+          <div class="sale-price-row">
+            <div class="sale-price">$25,300</div>
+            <div class="above-market">↑ $3,100</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  STATS BAR
+═══════════════════════════════════════════ -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div class="stat-block">
+      <span class="stat-num">250K+</span>
+      <div class="stat-label">
+        <strong>bids received</strong>
+        Every vehicle gets an average of 25 bids
+      </div>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num">9/10</span>
+      <div class="stat-label">
+        <strong>customers recommend us</strong>
+        9 out of 10 sellers recommend BidBus to friends
+      </div>
+    </div>
+    <div class="stat-block">
+      <span class="stat-num">5,000+</span>
+      <div class="stat-label">
+        <strong>cars sold</strong>
+        Including 1,800+ Toyotas in the past 12 months
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  TESTIMONIALS
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-eyebrow">Real sellers, real results</p>
+    <h2 class="section-title">What our Toyota sellers are saying</h2>
+    <p class="section-subtitle">Real people. Real Toyotas. Real results from dealers competing for their car.</p>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-title">Sold My Tacoma in Just One Day</div>
+        <div class="test-body">Listed my 2021 Tacoma TRD on BidBus and dealers started bidding right away. Ended up selling within 24 hours for $4,700 above what my dealer offered!</div>
+        <div class="test-author">
+          <div class="test-avatar">JR</div>
+          <div><div class="test-name">James R.</div><div class="test-handle">@jamesr · 2021 Tacoma TRD</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-title">Got $5,400 More Than CarMax</div>
+        <div class="test-body">BidBus helped me secure way better offers — over $5,400 higher than CarMax for my RAV4 Hybrid. The whole process was seamless start to finish.</div>
+        <div class="test-author">
+          <div class="test-avatar">PM</div>
+          <div><div class="test-name">Priya M.</div><div class="test-handle">@priyam · 2022 RAV4 Hybrid</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-title">Fast, Simple, and Stress-Free</div>
+        <div class="test-body">The entire experience was seamless. No stress, no wasted time, just a great offer on my 4Runner and an easy sale. Watching 38 dealers bid was actually fun!</div>
+        <div class="test-author">
+          <div class="test-avatar">CD</div>
+          <div><div class="test-name">Carlos D.</div><div class="test-handle">@carlosd · 2020 4Runner SR5</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-title">Dealers Competing Meant More Money</div>
+        <div class="test-body">Loved watching the offers come in on my Highlander. Dealers competed and I walked away with a deal I couldn't find anywhere else — $4,200 over trade-in value.</div>
+        <div class="test-author">
+          <div class="test-avatar">LS</div>
+          <div><div class="test-name">Linda S.</div><div class="test-handle">@lindas · 2021 Highlander XLE</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-title">Tundra Sold in 3 Hours</div>
+        <div class="test-body">Listed my 2022 Tundra TRD Pro in the morning and had it sold by noon. Couldn't believe how fast it went — 52 bids and $6,200 above what the dealer offered!</div>
+        <div class="test-author">
+          <div class="test-avatar">KO</div>
+          <div><div class="test-name">Kevin O.</div><div class="test-handle">@kevino · 2022 Tundra TRD Pro</div></div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="test-stars">★★★★★</div>
+        <div class="test-title">Got More Than I Expected for My Prius</div>
+        <div class="test-body">I thought I knew my Prius Prime's value but BidBus surprised me — the dealer competition pushed my offer $3,200 above what I expected. Got paid same day!</div>
+        <div class="test-author">
+          <div class="test-avatar">AW</div>
+          <div><div class="test-name">Aisha W.</div><div class="test-handle">@aishaW · 2022 Prius Prime</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  SELLER TIPS
+═══════════════════════════════════════════ -->
+<section class="section light-bg">
+  <div class="section-inner">
+    <p class="section-eyebrow">Seller tips</p>
+    <h2 class="section-title">4 ways Toyota sellers get top dollar</h2>
+    <p class="section-subtitle">Our team helps Toyota owners sell every day. Here's what the top sellers do differently.</p>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon-wrap">🏆</div>
+        <h3>Let dealers compete — don't accept the first offer</h3>
+        <p>The spread between the lowest and highest bid for the same Toyota can be $2,000–$6,000. BidBus surfaces all competing bids automatically so you never leave money on the table.</p>
+        <div class="tip-saving-tag">↑ Typical advantage: 18%–34% above first offer</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon-wrap">📋</div>
+        <h3>Gather your Toyota's service records before listing</h3>
+        <p>A documented maintenance history — especially for Tacomas, 4Runners, and Prius models — can add $500–$2,500 to your final bid. Dealers pay a premium for cars they can trust.</p>
+        <div class="tip-saving-tag">↑ Typical boost: $500–$2,500</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon-wrap">📸</div>
+        <h3>Take great photos — they drive dealer bids</h3>
+        <p>Dealers rely entirely on your listing photos to determine their top offer. Clean, well-lit photos of interior, exterior, and odometer consistently drive bids 12–18% higher.</p>
+        <div class="tip-saving-tag">↑ Photo quality impact: up to 18% higher bids</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon-wrap">⏱️</div>
+        <h3>Set a realistic reserve price to maximize competition</h3>
+        <p>A reserve price that's too high discourages bids. Our agents will help you set the right floor — one that protects your interests while encouraging maximum dealer participation.</p>
+        <div class="tip-saving-tag">↑ Optimal reserve = more competing bids</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  FAQ
+═══════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-eyebrow">Questions answered</p>
+    <h2 class="section-title">Selling your Toyota on BidBus — FAQ</h2>
+    <p class="section-subtitle">Everything you need to know before you list.</p>
+    <div class="faq-wrap">
+
+      <div class="faq-item">
+        <button class="faq-btn open" onclick="toggleFaq(this)">
+          How much is my Toyota worth right now?
+          <div class="faq-chevron">▼</div>
+        </button>
+        <div class="faq-answer open">
+          Toyota values vary by model, year, trim, mileage, and condition. Enter your plate or VIN above to get a real-time market estimate based on live dealer demand in your area. BidBus pulls data from our network of 1,000+ active dealers to give you the most accurate current market value — typically within 2 minutes.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          How does the 2-hour auction work?
+          <div class="faq-chevron">▼</div>
+        </button>
+        <div class="faq-answer">
+          Once your Toyota is listed, it enters a live 2-hour auction with our network of verified dealers. You'll receive a link to watch bids come in real time. At the end, if the highest bid meets your reserve price, your car is considered sold. If not, our specialists will negotiate on your behalf.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Can I sell a Toyota with a loan still on it?
+          <div class="faq-chevron">▼</div>
+        </button>
+        <div class="faq-answer">
+          Absolutely — this is very common. When you accept an offer, we coordinate with your lender to pay off the remaining balance directly. You receive the difference. Toyotas typically retain enough value to cover most loans, but our team will walk you through your specific situation.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Does BidBus buy my car?
+          <div class="faq-chevron">▼</div>
+        </button>
+        <div class="faq-answer">
+          No — BidBus doesn't buy your car directly. Instead, a dealer within our verified network purchases your vehicle. This is actually better for you: multiple dealers competing means you get a higher price than any single buyer (including us) would offer.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          Is BidBus free to use?
+          <div class="faq-chevron">▼</div>
+        </button>
+        <div class="faq-answer">
+          Listing your Toyota on BidBus is completely free. There are no upfront fees. We only charge a small $300 fee after your car is sold. If you don't get the price you want, you pay nothing.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-btn" onclick="toggleFaq(this)">
+          How fast will I get paid?
+          <div class="faq-chevron">▼</div>
+        </button>
+        <div class="faq-answer">
+          Same day in most cases. Once the auction completes and you accept an offer, the buying dealer arranges pickup and payment. You receive payment via ACH bank transfer or certified check — typically within 24 hours of vehicle pickup.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Inline peace of mind block -->
+    <div class="peace-block">
+      <div>
+        <h3>Sell your Toyota with peace of mind</h3>
+        <p>We'll guide you through the whole process, no experience needed. Free listing. No obligations. Same-day payment.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="#" class="btn-primary">Get My Offer →</a>
+        <a href="#" class="btn-outline">How it works</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  FINAL CTA
+═══════════════════════════════════════════ -->
+<div class="final-cta">
+  <h2>Get your free estimate in 2 mins</h2>
+  <p>Join thousands of Toyota sellers who got more money and sold faster with BidBus. It's free to list — you only pay if you sell.</p>
+  <div class="hero-form" style="margin-bottom:24px;">
+    <div class="hero-input-row" style="border: 2px solid var(--bb-border); max-width:480px;">
+      <input type="text" placeholder="Enter license plate (e.g. ABC1234)" style="color: var(--bb-text-dark);"/>
+      <button style="background: var(--bb-navy);">Get Offer</button>
+    </div>
+    <div class="hero-alt-link" style="color: var(--bb-text-muted);">
+      No license plate? <a style="color: var(--bb-accent);">Enter VIN instead</a>
+    </div>
+  </div>
+  <div class="final-cta-btns">
+    <a href="#" class="btn-dark">See past auction results</a>
+    <a href="#" class="btn-ghost">Learn how it works</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">Bid<span class="dot">Bus</span></span>
+      <p>BidBus provides a better car selling experience. A no-haggle, no-pressure 100% online process with free pickup and fast payment. List and sell your Toyota to 1,000+ certified dealers in a 2-hour live auction.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Sell My Car</h5>
+      <ul>
+        <li><a href="#">Get Estimate Now</a></li>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">Reviews</a></li>
+        <li><a href="#">Referral Program</a></li>
+        <li><a href="#">Past Auction Results</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Sell by Model</h5>
+      <ul>
+        <li><a href="#">Sell My Camry</a></li>
+        <li><a href="#">Sell My RAV4</a></li>
+        <li><a href="#">Sell My Tacoma</a></li>
+        <li><a href="#">Sell My 4Runner</a></li>
+        <li><a href="#">Sell My Highlander</a></li>
+        <li><a href="#">All Toyota Models</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Join Our Dealer Network</a></li>
+        <li><a href="#">Seller Portal</a></li>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>Copyright © 2026 BidBus Inc. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-btn').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+  if (!isOpen) {
+    btn.classList.add('open');
+    answer.classList.add('open');
+  }
+}
+</script>
+
+</body>
+</html>
